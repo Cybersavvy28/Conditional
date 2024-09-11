@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section style=" box-shadow: 10px 10px 15px black; height: 250px; width: 250px; align-items: center;
+     justify-content: center; margin-left: 490px; padding: 50px; margin-top: 120px;">
+ <div style="container: 1px; ;">
+    <h1 style="text-align: center; color: green">Guessing Number</h1>
+    <input style="align-items: center;" type="number" placeholder="Guess Number" id="guessInput">
+    <button onclick="checkGuess()" style="background-color: green; color: white; border-radius:5px ;">Guess</button>
+    <p id="put">Your Guess</p>
+ </div>
+</section>
+    <script>
+        function checkGuess() {
+            var myGuessNumber = 7
+            var guessInput = document.getElementById('guessInput').value
+            var put = document.getElementById('put')
+            if (guessInput == myGuessNumber) {
+                put.innerText = 'Congratulations you won!!!!'
+            }else{
+                put.innerText = 'Try again!!'
+            }
+        }
+    </script>
+</body>
+</html>
