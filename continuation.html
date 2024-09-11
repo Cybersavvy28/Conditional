@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+           
+        }
+        body {
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            background-size: 400% 400%;
+            animation: rollAndBounce 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @keyframes rollAndBounce {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        #display {
+            margin-top: 35px;
+        }
+        
+    </style>
+</head>
+<body>
+    <section style=" box-shadow: 10px 10px 15px black; 
+    height: 250px; width: 250px; position: relative; 
+     background:linear-gradient(120deg, #2980b9, #8e44ad); animation: rollAndBounce 15s ease infinite;
+      padding: 20px;
+     border-radius: 10px; ">
+    <h1 class="animate__animated animate__hinge" style="text-align: center; font-size: 30px; font-weight: bold;
+     animation: hinge 2s ease-in-out forwards; color: white; ">Grade Checker</h1>
+    <!-- <p style="color: red; display: none; " id="errorMsg">Haba, when it's not like you cannot see</p> -->
+    <input type="number" placeholder="Score" id="score" style="text-align: center; width: 250px; border-radius: 6px; padding: 3px; margin-top: 10px;"> <br>
+    <button onclick="checkGrade()" animate__hinge  style="margin-top: 20px; margin-left: 72px; background-color: green;
+    color: white; padding: 10px; border-radius: 15px; width: 120px; margin-top: 35px; ">Check</button>
+    <div id="display" style="text-align: center;"></div>
+    <div id="errorMsg" style="text-align: center; color: white;">Please enter a score</div>
+</section>
+
+    <script>
+        var AudioA = new Audio('audio/AudioA.mp3')
+        var AudioB = new Audio('audio/AudioB.MP3')
+        var AudioC = new Audio('audio/AudioC.mp3')
+        var AudioD = new Audio('audio/AudioD.mp3')
+        var AudioE = new Audio('audio/AudioE.mp3')
+        var AudioF = new Audio('audio/AudioF.mp3')
+        function checkGrade() {
+            var userScore = document.getElementById('score').value
+            var newScore = Number(userScore)
+            var display = document.getElementById('display')
+            var errorMsg = document.getElementById('errorMsg')
+            if (userScore === '') {
+                errorMsg.style.display = 'block'
+            } else {
+                errorMsg.style.display = 'none'
+
+             if(newScore >= 0 && newScore <= 39) {
+                console.log('F - You failed');
+                display.innerText = 'F - You failed';
+                AudioF.play()
+             } else if (newScore >= 40 && newScore <= 49) {
+                console.log('E - Poor');
+                display.innerText = 'E - Poor';
+                AudioE.play()
+             } else if (newScore >= 50 &&newScore <= 59) {
+                console.log('D - Fair');
+                display.innerText = 'D - Fair'
+                AudioD.play()    
+             } else if(newScore >= 60 &&newScore <= 69) {
+                console.log('C - Average');
+                display.innerText = 'C - Average'
+                AudioC.play()
+             } else if(newScore >= 70 && newScore <= 79) {
+                console.log('B - Good');
+                display.innerText = 'B - Good'
+                AudioB.play()
+             } else if(newScore >= 80 && newScore <= 100) {
+                console.log('A - Excellent');
+                display.innerText = 'A - Excellent'
+                AudioA.play()
+             } else {
+                console.log('Invalid score');
+                display.innerText = 'Invalid score'
+             }
+            } 
+        }
+    </script>
+</body>
+</html>
